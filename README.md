@@ -1,2 +1,2 @@
-# rest
-Zadanie testowe - usługa REST
+# Demo
+Skeleton demo

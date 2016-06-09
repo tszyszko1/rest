@@ -1,0 +1,8 @@
+{
+	"autoload": {
+        "psr-4": {
+			"Tszy\\Rest\\": "src/",
+			"Tszy\\Rest\\Tests\\": "tests/"
+		}
+    }
+}
