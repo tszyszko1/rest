@@ -1,13 +1,13 @@
 <?php
 
 class RestTest extends \PHPUnit_Framework_TestCase{
-	protected $hello;
+	protected $t1;
 	
 	public function setUp(){
-		$this->hello = new \Tszy\Rest\Rest();
+		$this->t1 = new \Tszy\Rest\Rest();
 	}
 	
 	public function testWorld(){
-		$this->assertSame('world', $this->hello->world());
+		$this->assertSame('world', $this->t1->wyslijzapytanie());
 	}
 }
