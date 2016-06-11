@@ -4,5 +4,8 @@
 			"Tszy\\Rest\\": "src/",
 			"Tszy\\Rest\\Tests\\": "tests/"
 		}
-    }
+    },
+	"require": {
+		"abraham/twitteroauth": "^0.6.4"
+	}
 }
