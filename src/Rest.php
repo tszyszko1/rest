@@ -6,6 +6,8 @@ class Rest{
     protected $Apiurl = "https://api.twitter.com/1.1/search/tweets.json?";
     //tablica przechowująca pobrane dane
     protected $odpowiedz;
+    protected $statystyki =array();
+   
    
          //metoda wysyła zapytanie i odczytuje odpowiedz w formacie JSON i zapisuje w $odpowiedz
     public function wyslijzapytanie(){
@@ -16,15 +18,23 @@ class Rest{
             $statu = $connection->setDecodeJsonAsArray(true);
             $statu = $connection->get("search/tweets", ["q" => "golang"]);
             $this->odpowiedz = $statu;
-            echo "<pre>";print_r($this->odpowiedz['statuses'][0]); echo "</pre>";
+            echo "<pre>";print_r($this->odpowiedz['statuses']); echo "</pre>";
     }
     //funkcja odpowiedzialna za aktualizację wyników
     public function obserwuj(){
         
     }
     //wyświetlanie wyników
-    public function wyswietlstatystyki(){
-        
+      public function wyswietlstatystyki(){     
+       
+            for($i=0;$i<count($this->odpowiedz['statuses']);$i++){               
+                if(!isset($this->statystyki[$this->odpowiedz['statuses'][$i]['user']['name']])){
+                  $this->statystyki[$this->odpowiedz['statuses'][$i]['user']['name']]=[['Ilosc twittow:',1],['Ilosc followersow',$this->odpowiedz['statuses'][$i]['user']['followers_count']]];              
+                }else{$this->statystyki[$this->odpowiedz['statuses'][$i]['user']['name']][0][1]++;} 
+            
+        }
+        json_encode($this->statystyki);
+       echo "<pre>";print_r($this->statystyki); echo "</pre>"; 
     }
         
 }
