@@ -15,11 +15,9 @@ class Rest{
             $statu = $connection->setDecodeJsonAsArray(true);
             $statu = $connection->get("search/tweets", ["q" => "golang"]);
             $this->odpowiedz = $statu;
-            //echo "<pre>".print_r($this->odpowiedz['statuses'],true)."</pre>";
     }
     //tworzenie tablicy userow ktorzy brali udzial w dyskusji na temat "golang"
     public function zapiszstatystyki(){ 
-            //$this->statystyki = $this->odpowiedz["statuses"][3];
             for($i=0;$i<count($this->odpowiedz['statuses']);$i++){           
                 if(!isset($this->statystyki[$this->odpowiedz['statuses'][$i]['user']['id']])){
                   $this->statystyki[$this->odpowiedz['statuses'][$i]['user']['id']]=$this->odpowiedz['statuses'][$i]['user'];              

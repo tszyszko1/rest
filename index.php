@@ -6,13 +6,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>Usługa Rest dla Twittera</title>
         <script>
-           // window.onload = startProces
+            window.onload = startProces
             //funkcja ajax która automatyzuje proces
             function startProces() {
                     var xmlhttp = new XMLHttpRequest();
                     xmlhttp.onreadystatechange = function() {
                         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                            document.getElementById("pojemnik_na_dane").innerHTML = JSON.stringify(xmlhttp.responseText,undefined, 2);
+                            document.getElementById("pojemnik_na_dane").innerHTML = xmlhttp.responseText;
                         }
                     };
                     xmlhttp.open("GET", "index2.php", true);
@@ -24,12 +24,12 @@
     <body>
         
        <?php
-            require('src\Rest.php');
-            $sad = new Tszy\Rest\Rest();
-            $sad->wyslijzapytanie();
-            $sad->zapiszstatystyki();         
+           // require('src\Rest.php');
+            //$sad = new Tszy\Rest\Rest();
+            //$sad->wyslijzapytanie();
+            //$sad->zapiszstatystyki();         
            //$a =print_r(json_encode($sad->statystyki,JSON_PRETTY_PRINT));
-            echo "<pre>".print_r(json_encode($sad->statystyki,JSON_PRETTY_PRINT),true)."</pre>";
+            //echo "<pre>".print_r(json_encode($sad->statystyki,JSON_PRETTY_PRINT),true)."</pre>";
         ?>
         <div id='pojemnik_na_dane'></div>
 
